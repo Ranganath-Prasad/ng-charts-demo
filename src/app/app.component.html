@@ -1,2 +1,11 @@
-<app-line></app-line>
-<router-outlet></router-outlet>
+<canvas
+  baseChart
+  height="600"
+  width="700"
+  [data]="barChartData"
+  [options]="barChartOptions"
+  [plugins]="barChartPlugins"
+  [legend]="barChartLegend"
+  [type]="'bar'"
+>
+</canvas>
