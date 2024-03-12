@@ -9,7 +9,17 @@ import { ResponseModel } from './response-model.model';
 export class SharedService {
   constructor(private http: HttpClient) {}
 
-  public getData(): Observable<ResponseModel> {
-    return this.http.get<ResponseModel>('./assets/data.json');
+  public getData(
+    drillDownLevel: string,
+    value: string
+  ): Observable<ResponseModel> {
+    if (drillDownLevel == 'month')
+      return this.http.get<ResponseModel>('./assets/data-month-wise.json');
+    else {
+      let dateArr = value.split('/');
+      return this.http.get<ResponseModel>(
+        `./assets/data-day-wise-${dateArr[1]}.json`
+      );
+    }
   }
 }
