@@ -1,19 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Complaint } from './complaint.model';
+import { ResponseModel } from './response-model.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SharedService {
-  constructor(private http: HttpClient) {
-    this.getJSON().subscribe((data) => {
-      console.log(data);
-    });
-  }
+  constructor(private http: HttpClient) {}
 
-  public getJSON(): Observable<Complaint[]> {
-    return this.http.get<Complaint[]>('./assets/data.json');
+  public getData(): Observable<ResponseModel> {
+    return this.http.get<ResponseModel>('./assets/data.json');
   }
 }
